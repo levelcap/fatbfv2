@@ -1,0 +1,123 @@
+html {
+    box-sizing: border-box;
+    background: #ffd17f;
+    font-family: 'helvetica neue';
+    font-size: 20px;
+    font-weight: 200;
+}
+
+body {
+    margin: 0;
+    color: white;
+    overflow-x: hidden;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+.expSelect {
+    font-family: 'Fredericka the Great', cursive;
+    background: url(../images/chalkboard.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    border-style: dashed;
+    border-color: #fff;
+    border-collapse: collapse;
+    width: 50%;
+    height: 100vh;
+    position: fixed;
+    z-index: 20;
+    cursor: pointer;
+}
+
+.expSelect .hovertext {
+    display: none;
+    font-size: .5em;
+}
+
+.expSelect p {
+    color: white;
+    font-size: 2em;
+    margin: 35% 25% 35% 25%;
+    display: block;
+}
+
+#businessExp {
+    border-width: 2px 2px 2px 0px;
+    top: 0;
+    left: 0;
+}
+
+#customerExp {
+    border-width: 2px 0px 2px 2px;
+    top: 0;
+    right: 0;
+}
+
+.mainContent {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background: url(../images/kitchen.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    z-index: 10;
+}
+
+.contentWrapper {
+    background-color: rgba(0, 0, 0, .7);
+    position: relative;
+    margin: auto;
+    margin-top: 5%;
+    width: 80%;
+}
+
+.contentWrapper .contentContainer {
+    position: relative;
+    top: 0;
+}
+
+.contentWrapper .contentContainer p {
+    text-align: center;
+    margin: 10px;
+    padding-top: 30px;
+    font-size: 1.2em;
+}
+
+#businessContent {
+    display: none;
+}
+
+#customerContent {
+    display: none;
+}
+
+.logoContainer {
+    position: relative;
+    text-align: center;
+    top: -50px;
+    display: block;
+    height: 80px;
+    z-index: 100;
+}
+
+.logoContainer img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.pretzel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-49%, -50%);
+    z-index: 100;
+}

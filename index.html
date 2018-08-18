@@ -1,193 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<meta>
   <meta charset="UTF-8">
-  <title>Flex Panels 💪</title>
-  <link href='https://fonts.googleapis.com/css?family=Amatic+SC' rel='stylesheet' type='text/css'>
+  <meta name="description" content="Fat Boyfriend Bakery specializes in providing pretzels to breweries and food businesses around the Greater Boston Area." />
+  <meta name="keywords" content="pretzels,bakery,boston,malden" />
+  <title>Fat Boyfriend Bakery | Boston Area Pretzels</title>
+  <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+  <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
+  <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
 </head>
 <body>
-<style>
-  html {
-    box-sizing: border-box;
-    background: #ffc600;
-    font-family: 'helvetica neue';
-    font-size: 20px;
-    font-weight: 200;
-  }
-
-  body {
-    margin: 0;
-  }
-
-  *, *:before, *:after {
-    box-sizing: inherit;
-  }
-
-  .panels {
-    min-height: 100vh;
-    overflow: hidden;
-    display: flex;
-  }
-
-  .panel {
-    background: #6B0F9C;
-    box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.1);
-    color: white;
-    text-align: center;
-    align-items: center;
-    /* Safari transitionend event.propertyName === flex */
-    /* Chrome + FF transitionend event.propertyName === flex-grow */
-    transition: font-size 0.7s cubic-bezier(0.61, -0.19, 0.7, -0.11),
-    flex 0.7s cubic-bezier(0.61, -0.19, 0.7, -0.11),
-    background 0.2s;
-    font-size: 20px;
-    background-size: cover;
-    background-position: center;
-    flex: 1;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .panel1 {
-    background-image: url(https://source.unsplash.com/gYl-UtwNg_I/1500x1500);
-  }
-
-  .panel2 {
-    background-image: url(https://source.unsplash.com/1CD3fd8kHnE/1500x1500);
-  }
-
-  .panel3 {
-    background-image: url(https://images.unsplash.com/photo-1465188162913-8fb5709d6d57?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&cs=tinysrgb&w=1500&h=1500&fit=crop&s=967e8a713a4e395260793fc8c802901d);
-  }
-
-  .panel4 {
-    background-image: url(https://source.unsplash.com/ITjiVXcwVng/1500x1500);
-  }
-
-  .panel5 {
-    background-image: url(https://source.unsplash.com/3MNzGlQM7qs/1500x1500);
-  }
-
-  .panel > * {
-    margin: 0;
-    width: 100%;
-    transition: transform 0.5s;
-    flex: 1 0 auto;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-  }
-
-  .panel p {
-    text-transform: uppercase;
-    font-family: 'Amatic SC', cursive;
-    text-shadow: 0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
-    font-size: 2em;
-  }
-
-  .panel p:nth-child(2) {
-    font-size: 4em;
-  }
-
-  .panel.open {
-    font-size: 40px;
-    flex: 5;
-  }
-
-  .panel > *:first-child {
-    transform: translateY(-100%);
-  }
-
-  .panel > *:last-child {
-    transform: translateY(100%);
-  }
-
-  .panel.open-active > *:first-child {
-    transform: translateY(0);
-  }
-
-  .panel.open-active > *:last-child {
-    transform: translateY(0);
-  }
-
-  .header {
-    position: absolute;
-    z-index: 10;
-    width: 100%;
-    height: 10%;
-    background-color: rgba(0, 0, 0, .75);
-    color: white;
-    text-transform: uppercase;
-    font-family: 'Amatic SC', cursive;
-    text-shadow: 0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
-    font-size: 2em;
-  }
-
-  .header img {
-    width: 10%;
-    display: block;
-    position: absolute;
-    top: 15%;
-    left: 0;
-    right: 0;
-    margin: auto;
-  }
-
-  .header .left-text {
-    margin-left: 10%;
-    float: left;
-  }
-
-  .header .right-text {
-    margin-right: 10%;
-    float: right;
-  }
-
-</style>
-
-<div class="header">
-  <span class="left-text">Baked Goods</span>
-  <img src="./images/logo.png"/>
-  <span class="right-text">Baked Good</span>
+<div class="expSelect" id="businessExp">
+  <p>My Customers Want Pretzels!
+    <br/>
+    <span class="hovertext">(Business Inquiries)</span>
+  </p>
+</div>
+<div class="expSelect" id="customerExp">
+  <p>I Want Pretzels!
+    <br/>
+    <span class="hovertext">(Where You Can Find Us)</span>
+  </p>
 </div>
 
-<div class="panels">
-  <div class="panel panel1">
-    <p>Eat</p>
-    <p>Pretzels</p>
-    <p></p>
+<section class="modal" id="modal">
+  <span class="closeModal">X</span>
+  <div class="modalFrame" id="modalFrame">
+    <div class="modalContent" id="beerhallPretzels">
+      <img src="images/products/beerhall-pretzel.jpg" class="partnerImage"/>
+      <h2>Beerhall Pretzels</h2>
+      <p>Our Bavarian-style Beerhall Pretzels are about the size of a human face, and can be stuffed inside of one for convenient storage.</p>
+    </div>
+
+    <div class="modalContent" id="pretzelBites">
+      <img src="images/products/pretzel-bites.jpg" class="partnerImage"/>
+      <h2>Pretzel Bites</h2>
+      <p>For the throw-them-at-your-mouth-and-see-what-sticks crowd, we offer Pretzel Bites.  These normally come ten to a bag, and can be made either unfilled for pure pretzel goodness, or cheese-filled.</p>
+    </div>
+
+    <div class="modalContent" id="biercheese">
+      <img src="images/products/biercheese.jpg" class="partnerImage"/>
+      <h2>Biercheese</h2>
+      <p>A savory cheese dip that we make with the beers from our partner breweries.</p>
+    </div>
   </div>
-  <div class="panel panel2">
-    <p>Our</p>
-    <p>Events</p>
-    <p>Check out our events because here they all are!</p>
+</section>
+
+<section class="mainContent">
+  <nav role="navigation">
+    <div id="menuToggle">
+      <input id="menuCheck" type="checkbox" />
+      <span></span>
+      <span></span>
+      <span></span>
+      <ul id="menu">
+        <a id="menuBusiness" href="#"><li>Business Inquiries</li></a>
+        <a id="menuCustomer" href="#"><li>Find Our Pretzels</li></a>
+        <a href="https://www.instagram.com/fatboyfriendbakery/" target="_blank"><li>Instagram</li></a>
+        <a href="https://www.facebook.com/FatBoyfriendBakery/"><li>Facebook</li></a>
+      </ul>
+    </div>
+  </nav>
+
+  <div id="customerContent" class="contentWrapper">
+    <div class="logoContainer"><img src="images/chalklogo2.png"/></div>
+    <div class="contentContainer chalked-border">
+      <p>
+        Want Pretzels?
+        <br/><br/>
+        You can find them at the following locations!
+      </p>
+    </div>
+    <section id="partners">
+      <a href="http://www.idlehandscraftales.com/site/" class='framelink' target="_blank">
+        <div class="partnerContainer chalked-border">
+          <img src="images/partners/idle-hands.png" class="partnerImage"/>
+        </div>
+      </a>
+
+      <a href="https://www.exhibit-a-brewing.com/" class='framelink' target="_blank">
+        <div class="partnerContainer chalked-border">
+          <img src="images/partners/exhibit-a.jpg" class="partnerImage"/>
+        </div>
+      </a>
+
+      <a href="https://www.barewolfbrewing.com/home" class='framelink' target="_blank">
+        <div class="partnerContainer chalked-border">
+          <img src="images/partners/barewolf.webp" class="partnerImage"/>
+        </div>
+      </a>
+
+      <a href="https://www.redapplelunch.com/" class='framelink' target="_blank">
+        <div class="partnerContainer chalked-border">
+          <img src="images/partners/redapple.png" class="partnerImage"/>
+        </div>
+      </a>
+
+      <a href="https://www.nightshiftbrewing.com/" class='framelink' target="_blank">
+        <div class="partnerContainer chalked-border">
+          <img src="images/partners/nightshift.jpg" class="partnerImage"/>
+        </div>
+      </a>
+    </section>
   </div>
-  <div class="panel panel3">
-    <p>Experience</p>
-    <p>Catering</p>
-    <p>Today</p>
+
+  <div id="businessContent" class="contentWrapper">
+    <div class="logoContainer"><img src="images/chalklogo2.png"/></div>
+    <div class="contentContainer chalked-border">
+      <p>
+        We provide pretzels to breweries and food businesses around the Greater Boston Area.
+        <br/>
+        Shoot us an <a href="mailto:fatboyfriendbakery@gmail.com" target="_top">email</a>
+        or give us a call at <a href="7812585905">781-258-5905</a> for pricing and delivery information.
+        <br/><br/>
+        Click below to read more about our products!
+      </p>
+    </div>
+
+    <section id="products">
+      <div class="productContainer chalked-border" data-target="beerhallPretzels">
+        <h2>Beerhall Pretzels</h2>
+        <p>Big giant pretzels, or slightly smaller still enormous pretzels!</p>
+      </div>
+
+      <div class="productContainer chalked-border" data-target="pretzelBites">
+        <h2>Pretzel Bites</h2>
+        <p>Tiny powerful flavor fists</p>
+      </div>
+
+      <div class="productContainer chalked-border" data-target="biercheese">
+        <h2>Biercheese</h2>
+        <p>Cheese, with beer, for dipping pretzels or drinking directly when nobody is looking</p>
+      </div>
+    </section>
   </div>
-</div>
+</section>
 
 <script>
-  const panels = document.querySelectorAll('.panel');
-
-  function toggleOpen () {
-    panels.forEach(panel => panel.classList.remove('open'));
-    this.classList.toggle('open');
+  function closeModal() {
+    $(".modal").fadeOut(700, function() {
+      $(".modalContent").hide();
+    });
   }
 
-  function toggleActive (e) {
-    this.classList.toggle('open-active');
-    if (e.propertyName.includes('flex')) {
-      this.classList.toggle('open-active');
-    }
+  function openModal(productId) {
+    $("#" + productId).show();
+    $(".modal").fadeIn(700);
   }
 
-  panels.forEach(panel => panel.addEventListener('click', toggleOpen));
-  panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
+  $(document).ready(function() {
+    $('.expSelect').click(function() {
+      var targetId = this.id;
+      $("#businessExp").fadeOut(500);
+      $("#customerExp").fadeOut(500, function() {
+        if (targetId === 'customerExp') {
+          $("#customerContent").fadeIn(1000);
+          $("#businessContent").hide();
+        } else {
+          $("#customerContent").hide();
+          $("#businessContent").fadeIn(1000);
+        }
+        $('#menuToggle').fadeIn(1000);
+      });
+    });
+
+    $(".expSelect").hover(function() {
+      $(this).find('.hovertext').fadeIn();
+    }, function() {
+      $(this).find('.hovertext').fadeOut();
+    });
+
+    $("#menuBusiness").click(function() {
+      $("#menuCheck").prop('checked', false);
+      $("#customerContent").hide();
+      $("#businessContent").fadeIn(1000);
+    });
+
+    $("#menuCustomer").click(function() {
+      $("#menuCheck").prop('checked', false);
+      $("#customerContent").fadeIn(1000);
+      $("#businessContent").hide();
+    });
+
+    $(".productContainer").click(function() {
+      var targetId = $(this).data('target');
+      openModal(targetId);
+    });
+
+    $(".closeModal").click(function() {
+      closeModal();
+    });
+
+    $(".modal").click(function(event) {
+      if (event.target.id === "modal") {
+        closeModal();
+      }
+    });
+  });
 </script>
 
 </body>
